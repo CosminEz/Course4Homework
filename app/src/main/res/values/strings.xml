@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Course2Homework2</string>
+    <string name="hint_name">  Nume</string>
+    <string name="hint_prenume">  Prenume</string>
+    <string name="hint_email">  Email</string>
+    <string name="hint_telefon">  Numar telefon</string>
+    <string name="universitate">Universitate</string>
+    <string name="unibuc">Universitatea din Bucuresti</string>
+    <string name="politehnica">Politehnica</string>
+    <string name="pitesti">Universitatea din Pitesti</string>
+    <string name="cunostinte">Cunostinte</string>
+    <string name="oop">OOP</string>
+    <string name="C">C/C++</string>
+    <string name="java">Java</string>
+    <string name="Csharp">C#</string>
+    <string name="stagiu">Doresti sa aplici pentru stagiul de Android ?</string>
+    <string name="salveaza">Salveaza</string>
+    <string name="poza">O poza cu un om .</string>
+    <string name="android">android</string>
+    <string name="poza1">O poza .</string>
+    <string name="student">Adaugare Student</string>
+    <string name="studentgol">Nu exista studenti.</string>
+    <string name="adaugastudentgol">Adaugare Student</string>
+</resources>
