@@ -61,6 +61,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         checkBoxCSHARP=(CheckBox)findViewById(R.id.csharp);
         db=DBHelper.getInstance(this);
 
+        Bundle extras = getIntent().getExtras();
+        Student student;
+        if(extras != null){
+            List<Student> listaStudenti=db.getAllStudents();
+            student=listaStudenti.get(extras.getInt("EXTRA_STUDENT"));
+
+            editTextNume.setText(student.getNume());
+            editTextPrenume.setText(student.getPrenume());
+            editTextTelefon.setText(student.getTelefon());
+            editTextMail.setText(student.getMail());
+            if(student.getuniversitate().equals("Universitatea din Bucuresti"))
+            grupUniversitati.check(R.id.unibuc);
+            if(student.getuniversitate().equals("Politehnica"))
+                grupUniversitati.check(R.id.poli);
+            if(student.getuniversitate().equals("Universitatea din Pitesti"))
+                grupUniversitati.check(R.id.pitesti);
+            if(student.getCunostinte().toString().contains(checkBoxOOP.getText().toString().trim()))
+                checkBoxOOP.setChecked(true);
+            if(student.getCunostinte().toString().contains(checkBoxJAVA.getText().toString().trim()))
+                checkBoxJAVA.setChecked(true);
+            if(student.getCunostinte().toString().contains(checkBoxC.getText().toString().trim()))
+                checkBoxC.setChecked(true);
+            if(student.getCunostinte().toString().contains(checkBoxCSHARP.getText().toString().trim()))
+                checkBoxCSHARP.setChecked(true);
+        }
+
+
 
 
 
@@ -117,8 +144,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             Student student = new Student (0,nume,prenume,universitate.getText().toString().trim(),mail,telefon,cunostinte);
 
+            Bundle extras = getIntent().getExtras();
+            if(extras==null) {
+            db.insertStudent(student);}
+            else{
+                int id=extras.getInt("EXTRA_STUDENT");
+                db.updateStudent(id,student);
 
-            db.insertStudent(student);
+            }
+
             Intent intent=new Intent(MainActivity.this,AfisareStudenti.class);
             startActivity(intent);
         }

@@ -129,6 +129,9 @@ public class DBHelper extends SQLiteOpenHelper{
 
     public boolean updateStudent (Integer id, Student student) {
         SQLiteDatabase db = this.getWritableDatabase();
+        try{
+
+        db.beginTransaction();
         ContentValues contentValues = new ContentValues();
         contentValues.put(STUDENTS_COLUMN_NUME, student.getNume());
         contentValues.put(STUDENTS_COLUMN_PRENUME, student.getPrenume());
@@ -137,7 +140,14 @@ public class DBHelper extends SQLiteOpenHelper{
         contentValues.put(STUDENTS_COLUMN_UNIVERSITY, student.getuniversitate());
         contentValues.put(STUDENTS_COLUM_CUNOSTINTE, student.getCunostinte().toString());
         db.update(STUDENTS_TABLE_NAME, contentValues, "id = ? ", new String[] { Integer.toString(id) } );
-        return true;
+            db.setTransactionSuccessful();}
+        catch (Exception e) {
+            Log.d(TAG, "Error while trying to update student to database");}
+        finally {
+            db.endTransaction();
+            return true;
+        }
+
     }
 
     public Integer deleteStudent (Integer id) {

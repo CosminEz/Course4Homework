@@ -47,11 +47,11 @@ public class AfisareStudenti extends AppCompatActivity implements View.OnClickLi
             buttonAdaugareStudent.setOnClickListener(this);}
             listViewStudent.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(view.getContext() ,"Ai apasat pe "+db.getStudent(position+1).getString(db.getStudent(position+1).getColumnIndex("nume")),
-                            Toast.LENGTH_SHORT).show();
-                    //Intent intent = new Intent(AfisareStudenti.this, MainActivity.class);
-                    //intent.putExtra("EXTRA_SESSION_ID", sessionId);
-                    //startActivity(intent);
+                    /*Toast.makeText(view.getContext() ,"Ai apasat pe "+listaStudenti.get(position).getuniversitate(),
+                            Toast.LENGTH_SHORT).show();*/
+                    Intent intent = new Intent(AfisareStudenti.this, MainActivity.class);
+                    intent.putExtra("EXTRA_STUDENT", position);
+                    startActivity(intent);
                     return  true;
 
 
